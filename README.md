@@ -1,2 +1,2 @@
 # jsonLd
-Utilites to manage JsonLD linked data display
+Utilites to manage JsonLD display
