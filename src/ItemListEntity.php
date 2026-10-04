@@ -45,12 +45,9 @@ class ItemListEntity extends Entity
 
   public function addListItem(ListItemEntity $listItem)
   {
-    static $position;
-    if (!isset($position)) {
-      $position = 1;
-    }
-
-    $listItem->set('position', $position++);
+    // position is per list: the next slot of THIS instance, never a counter
+    // shared across instances (or across subclasses, as a static would be)
+    $listItem->set('position', count($this->json['itemListElement'] ?? []) + 1);
 
     $this->json['itemListElement'][] = $listItem;
 

@@ -39,6 +39,13 @@ class ProductEntity extends Entity
     return $this;
   }
 
+  /**
+   * Set THE offer of the product (schema.org `offers` as a single Offer).
+   * For several offers use addOffers() with an AggregateOfferEntity.
+   *
+   * @param int $index unused — kept for signature compatibility, ignored
+   * @deprecated the $index parameter; it never selected anything
+   */
   public function addOffer(OfferEntity $offer, int $index = 0)
   {
     $this->json['offers'] = $offer;

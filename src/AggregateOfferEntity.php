@@ -74,12 +74,8 @@ class AggregateOfferEntity extends Entity
 
   public function addOfferItem(OfferEntity $offer)
   {
-    static $position;
-    if (!isset($position)) {
-      $position = 1;
-    }
-
-    $offer->set('position', $position++);
+    // position is per aggregate: the next slot of THIS instance
+    $offer->set('position', count($this->json['offers'] ?? []) + 1);
 
     $this->json['offers'][] = $offer;
     return $this;
