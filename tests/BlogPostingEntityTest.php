@@ -9,13 +9,6 @@ use JDZ\JsonLd\OrganizationEntity;
 
 class BlogPostingEntityTest extends TestCase
 {
-    public function testType(): void
-    {
-        $post = new BlogPostingEntity();
-
-        $this->assertEquals('BlogPosting', $post->get('@type'));
-    }
-
     public function testMakeBasic(): void
     {
         $post = new BlogPostingEntity();

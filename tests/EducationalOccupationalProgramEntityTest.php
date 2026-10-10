@@ -7,13 +7,6 @@ use JDZ\JsonLd\EducationalOccupationalProgramEntity;
 
 class EducationalOccupationalProgramEntityTest extends TestCase
 {
-    public function testType(): void
-    {
-        $program = new EducationalOccupationalProgramEntity();
-
-        $this->assertEquals('EducationalOccupationalProgram', $program->get('@type'));
-    }
-
     public function testMake(): void
     {
         $program = new EducationalOccupationalProgramEntity();

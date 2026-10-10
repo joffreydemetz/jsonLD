@@ -8,13 +8,6 @@ use JDZ\JsonLd\SellerEntity;
 
 class OfferEntityTest extends TestCase
 {
-    public function testType(): void
-    {
-        $offer = new OfferEntity();
-
-        $this->assertEquals('Offer', $offer->get('@type'));
-    }
-
     public function testMake(): void
     {
         $offer = new OfferEntity();

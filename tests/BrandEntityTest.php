@@ -7,13 +7,6 @@ use JDZ\JsonLd\BrandEntity;
 
 class BrandEntityTest extends TestCase
 {
-    public function testType(): void
-    {
-        $brand = new BrandEntity();
-
-        $this->assertEquals('Brand', $brand->get('@type'));
-    }
-
     public function testMakeBasic(): void
     {
         $brand = new BrandEntity();

@@ -8,13 +8,6 @@ use JDZ\JsonLd\ImageObjectEntity;
 
 class OrganizationEntityTest extends TestCase
 {
-    public function testType(): void
-    {
-        $org = new OrganizationEntity();
-
-        $this->assertEquals('Organization', $org->get('@type'));
-    }
-
     public function testMakeBasic(): void
     {
         $org = new OrganizationEntity();

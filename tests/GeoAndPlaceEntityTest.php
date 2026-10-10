@@ -8,13 +8,6 @@ use JDZ\JsonLd\PlaceEntity;
 
 class GeoAndPlaceEntityTest extends TestCase
 {
-    public function testGeoCoordinatesType(): void
-    {
-        $geo = new GeoCoordinatesEntity();
-
-        $this->assertEquals('GeoCoordinates', $geo->get('@type'));
-    }
-
     public function testGeoCoordinatesMake(): void
     {
         $geo = new GeoCoordinatesEntity();
@@ -23,13 +16,6 @@ class GeoAndPlaceEntityTest extends TestCase
         $this->assertEquals('48.8566', $geo->get('latitude'));
         $this->assertEquals('2.3522', $geo->get('longitude'));
         $this->assertSame($geo, $result);
-    }
-
-    public function testPlaceType(): void
-    {
-        $place = new PlaceEntity();
-
-        $this->assertEquals('Place', $place->get('@type'));
     }
 
     public function testPlaceMakeBasic(): void

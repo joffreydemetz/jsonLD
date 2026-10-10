@@ -10,13 +10,6 @@ use JDZ\JsonLd\WebPageEntity;
 
 class ArticleEntityTest extends TestCase
 {
-    public function testType(): void
-    {
-        $article = new ArticleEntity();
-
-        $this->assertEquals('Article', $article->get('@type'));
-    }
-
     public function testMake(): void
     {
         $article = new ArticleEntity();

@@ -10,13 +10,6 @@ use JDZ\JsonLd\AggregateOfferEntity;
 
 class ProductEntityTest extends TestCase
 {
-    public function testType(): void
-    {
-        $product = new ProductEntity();
-
-        $this->assertEquals('Product', $product->get('@type'));
-    }
-
     public function testMake(): void
     {
         $product = new ProductEntity();

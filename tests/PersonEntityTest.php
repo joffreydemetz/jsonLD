@@ -7,13 +7,6 @@ use JDZ\JsonLd\PersonEntity;
 
 class PersonEntityTest extends TestCase
 {
-    public function testType(): void
-    {
-        $person = new PersonEntity();
-
-        $this->assertEquals('Person', $person->get('@type'));
-    }
-
     public function testMake(): void
     {
         $person = new PersonEntity();

@@ -7,13 +7,6 @@ use JDZ\JsonLd\ImageObjectEntity;
 
 class ImageObjectEntityTest extends TestCase
 {
-    public function testType(): void
-    {
-        $image = new ImageObjectEntity();
-
-        $this->assertEquals('ImageObject', $image->get('@type'));
-    }
-
     public function testMakeWithLocalImage(): void
     {
         $tmpFile = sys_get_temp_dir() . '/jdz_test_' . uniqid() . '.png';

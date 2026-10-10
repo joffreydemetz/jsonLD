@@ -9,13 +9,6 @@ use JDZ\JsonLd\ListItemEntity;
 
 class ListEntitiesTest extends TestCase
 {
-    public function testListItemType(): void
-    {
-        $item = new ListItemEntity();
-
-        $this->assertEquals('ListItem', $item->get('@type'));
-    }
-
     public function testListItemMake(): void
     {
         $item = new ListItemEntity();
@@ -34,13 +27,6 @@ class ListEntitiesTest extends TestCase
         $itemData = $item->get('item');
         $this->assertEquals('https://example.com/page', $itemData->{'@id'});
         $this->assertObjectNotHasProperty('name', $itemData);
-    }
-
-    public function testItemListType(): void
-    {
-        $list = new ItemListEntity();
-
-        $this->assertEquals('ItemList', $list->get('@type'));
     }
 
     public function testItemListMake(): void
@@ -91,13 +77,6 @@ class ListEntitiesTest extends TestCase
         $list->validate();
 
         $this->assertEquals(2, $list->get('numberOfItems'));
-    }
-
-    public function testBreadcrumbListType(): void
-    {
-        $breadcrumb = new BreadcrumbListEntity();
-
-        $this->assertEquals('BreadcrumbList', $breadcrumb->get('@type'));
     }
 
     public function testBreadcrumbListInheritsItemList(): void

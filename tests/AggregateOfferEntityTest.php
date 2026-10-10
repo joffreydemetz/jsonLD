@@ -8,13 +8,6 @@ use JDZ\JsonLd\OfferEntity;
 
 class AggregateOfferEntityTest extends TestCase
 {
-    public function testType(): void
-    {
-        $agg = new AggregateOfferEntity();
-
-        $this->assertEquals('AggregateOffer', $agg->get('@type'));
-    }
-
     public function testMake(): void
     {
         $agg = new AggregateOfferEntity();

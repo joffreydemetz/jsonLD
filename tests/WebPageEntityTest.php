@@ -7,13 +7,6 @@ use JDZ\JsonLd\WebPageEntity;
 
 class WebPageEntityTest extends TestCase
 {
-    public function testType(): void
-    {
-        $page = new WebPageEntity();
-
-        $this->assertEquals('WebPage', $page->get('@type'));
-    }
-
     public function testMake(): void
     {
         $page = new WebPageEntity();

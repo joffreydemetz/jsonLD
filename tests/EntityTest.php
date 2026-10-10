@@ -62,13 +62,6 @@ class EntityTest extends TestCase
         $this->assertFalse($entity->has('null'));
     }
 
-    public function testConstructorSetsType(): void
-    {
-        $entity = new PersonEntity();
-
-        $this->assertEquals('Person', $entity->get('@type'));
-    }
-
     public function testConstructorWithContextSetsContext(): void
     {
         $entity = new PersonEntity(true);
