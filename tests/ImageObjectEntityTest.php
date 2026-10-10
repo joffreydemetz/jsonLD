@@ -36,12 +36,15 @@ class ImageObjectEntityTest extends TestCase
         }
     }
 
-    public function testMakeWithInvalidUrlSetsOnlyUrl(): void
+    public function testMakeWithUnreadableImageSetsOnlyUrl(): void
     {
-        $image = new ImageObjectEntity();
-        $image->make('https://invalid.example.com/nonexistent.jpg');
+        // A local path that does not exist: no network, and no PHP warning (failOnWarning)
+        $missing = sys_get_temp_dir() . '/jdz-jsonld-missing-' . uniqid() . '.jpg';
 
-        $this->assertEquals('https://invalid.example.com/nonexistent.jpg', $image->get('url'));
+        $image = new ImageObjectEntity();
+        $image->make($missing);
+
+        $this->assertEquals($missing, $image->get('url'));
         $this->assertFalse($image->has('width'));
         $this->assertFalse($image->has('height'));
     }

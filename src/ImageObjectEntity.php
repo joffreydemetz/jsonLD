@@ -17,7 +17,8 @@ class ImageObjectEntity extends Entity
   {
     $this->set('url', $url);
 
-    if ($url && ($size = \getimagesize($url))) {
+    // An unreadable or unreachable image only means no width/height: never a warning
+    if ($url && ($size = @\getimagesize($url))) {
       $this->set('width', $size[0]);
       $this->set('height', $size[1]);
     }
