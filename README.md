@@ -134,6 +134,8 @@ composer test
 
 ## Changelog
 
+- **1.0.6** - `Entity::set()` keeps a zero (`0`, `0.0`, `'0'`): a free offer's price `"0"` used to be dropped. Empty values (`''`, `null`, `false`, `[]`) are still skipped.
+
 - **1.0.5** - `ImageObjectEntity::make()` no longer emits a PHP warning when the image cannot be read (missing file, unreachable host): the entity just carries no width/height.
 - **1.0.4** - List and offer positions are numbered per instance: a second `ItemListEntity`, `BreadcrumbListEntity` or `AggregateOfferEntity` in the same request starts again at 1 (a shared static counter used to continue the numbering). `ProductEntity::addOffer()`'s `$index` is documented as unused.
 - **1.0.3** - PHP >= 8.2; unit test suite.
