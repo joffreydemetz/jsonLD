@@ -77,7 +77,8 @@ class Entity implements \JsonSerializable
 
   public function set(string $key, mixed $value)
   {
-    if ($value) {
+    // an empty value is no property, a zero is a value (a free offer's price "0")
+    if (null !== $value && '' !== $value && false !== $value && [] !== $value) {
       $this->json[$key] = $value;
     }
     return $this;

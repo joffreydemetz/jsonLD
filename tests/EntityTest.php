@@ -2,7 +2,9 @@
 
 namespace JDZ\JsonLd\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use JDZ\JsonLd\OfferEntity;
 use JDZ\JsonLd\PersonEntity;
 use JDZ\JsonLd\WebPageEntity;
 
@@ -50,16 +52,33 @@ class EntityTest extends TestCase
         $this->assertSame($entity, $result);
     }
 
-    public function testSetIgnoresFalsyValues(): void
+    public static function setValues(): array
     {
-        $entity = new PersonEntity();
-        $entity->set('empty', '');
-        $entity->set('zero', 0);
-        $entity->set('null', null);
+        return [
+            'an empty string is no property' => ['', false],
+            'null is no property' => [null, false],
+            'false is no property' => [false, false],
+            'an empty array is no property' => [[], false],
+            // set() used `if ($value)`: zeros were dropped too
+            'the integer 0 is a value' => [0, true],
+            'the float 0.0 is a value' => [0.0, true],
+            "the string '0' is a value" => ['0', true],
+        ];
+    }
 
-        $this->assertFalse($entity->has('empty'));
-        $this->assertFalse($entity->has('zero'));
-        $this->assertFalse($entity->has('null'));
+    #[DataProvider('setValues')]
+    public function testSetSkipsEmptyValuesButKeepsZero(mixed $value, bool $kept): void
+    {
+        $entity = (new PersonEntity())->set('value', $value);
+
+        $this->assertSame($kept, $entity->has('value'));
+    }
+
+    public function testAFreeOfferKeepsItsPrice(): void
+    {
+        $offer = (new OfferEntity())->make('0', 'EUR');
+
+        $this->assertSame('0', $offer->get('price'));
     }
 
     public function testConstructorWithContextSetsContext(): void
